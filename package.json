@@ -1,0 +1,23 @@
+{
+  "name": "sign-in-with-ethereum",
+  "version": "1.0.0",
+  "description": "Sign in with Ethereum, login with web3 wallet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sso",
+    "eth",
+    "ethereum",
+    "web3",
+    "wallet",
+    "login",
+    "signup"
+  ],
+  "author": "Harry Moreno",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^5.4.6"
+  }
+}
