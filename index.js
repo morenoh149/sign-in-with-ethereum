@@ -22,6 +22,11 @@ catch {
 
 /**
  * Prompts user to connect page with Metamask.
+ * TODO maybe prefer provider.request({ method: 'eth_requestAccounts', params: ... })
+ * https://eips.ethereum.org/EIPS/eip-1193#request
+ * https://docs.ethers.io/v5/api/providers/other/#Web3Provider--ExternalProvider
+ * TODO maybe replace toplevel then/catch with optimistic refresh
+ * https://docs.ethers.io/v5/concepts/best-practices/#best-practices
  */
 let signInWithEthereum = async () => {
   provider.send("eth_requestAccounts", [])
