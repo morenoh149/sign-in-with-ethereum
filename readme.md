@@ -12,6 +12,7 @@ Demo at https://sign-in-with-ethereum.netlify.app/.
 1. ✅  Display public Account information
 1. ✅  Show warning if web2 browser
 1. [ ] Verify user by asking them to sign a message with their private key
+1. [ ] Show ens name if any
 
 ## Running
 
