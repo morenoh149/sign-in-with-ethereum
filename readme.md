@@ -8,10 +8,10 @@ Demo at https://sign-in-with-ethereum.netlify.app/.
 
 ## TODO
 
-✅ Launch MetaMask extension on button click
-✅ Display public Account information
-✅ Show warning if web2 browser
-[ ] Verify user by asking them to sign a message with their private key
+1. ✅  Launch MetaMask extension on button click
+1. ✅  Display public Account information
+1. ✅  Show warning if web2 browser
+1. [ ] Verify user by asking them to sign a message with their private key
 
 ## Running
 
