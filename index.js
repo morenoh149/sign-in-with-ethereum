@@ -1,13 +1,23 @@
 import { ethers } from "./ethers-5.1.esm.min.js";
-// A Web3Provider wraps a standard Web3 provider, which is
-// what Metamask injects as window.ethereum into each page
-const provider = new ethers.providers.Web3Provider(window.ethereum)
 
 let userAddress;
 let balance;
 let network;
 let signInBtn = document.querySelector('#sign-in-btn');
 let accountInfo = document.querySelector('#account-info');
+
+try {
+  // A Web3Provider wraps a standard Web3 provider, which is
+  // what Metamask injects as window.ethereum into each page
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
+}
+catch {
+  // non web3 browser, warn user
+  signInBtn.parentNode.replaceChild(
+    document.createTextNode('Non Web3 browser detected. Please install MetaMask or upgrade your browser.'),
+    signInBtn
+  );
+}
 
 /**
  * Prompts user to connect page with Metamask.
