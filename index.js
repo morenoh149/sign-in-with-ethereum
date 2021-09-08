@@ -5,6 +5,7 @@ let balance;
 let network;
 let signInBtn = document.querySelector('#sign-in-btn');
 let accountInfo = document.querySelector('#account-info');
+let verifyBtn = document.querySelector('#verify-btn');
 let provider;
 
 try {
@@ -42,6 +43,7 @@ let signInWithEthereum = async () => {
     network = provider.network.name;
     signInBtn.remove();
     displayAccountInformation();
+    verifyBtn.style.display = 'block';
   })
   .catch(err => {
     // Developer probably changed metamask, prompt to refresh
@@ -52,6 +54,16 @@ let signInWithEthereum = async () => {
   });
 }
 signInBtn.addEventListener('click', signInWithEthereum);
+
+
+/**
+ * Prompts user to sign a message. This verifies that the address on window.ethereum
+ * is owned by the person that has the private key.
+ */
+ let signMessage = async () => {
+   console.log('todo')
+}
+verifyBtn.addEventListener('click', signMessage);
 
 /**
  * Displays User's information on the page.
@@ -70,3 +82,9 @@ let displayAccountInformation = () => {
     </div>
   `);
 }
+
+/**
+ * Prompts user to sign a message. This proves that the detected address is owned
+ * by the person that has the private key.
+ * TODO https://docs.ethers.io/v5/api/signer/#Signer-signMessage
+ */

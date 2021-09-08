@@ -6,6 +6,13 @@ login with web3 wallet
 
 Demo at https://sign-in-with-ethereum.netlify.app/.
 
+## TODO
+
+✅ Launch MetaMask extension on button click
+✅ Display public Account information
+✅ Show warning if web2 browser
+[ ] Verify user by asking them to sign a message with their private key
+
 ## Running
 
 * serve locally `python3 -m http.server 8000 --bind 127.0.0.1`
