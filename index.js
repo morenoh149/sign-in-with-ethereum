@@ -49,7 +49,7 @@ let displayAccountInformation = () => {
       <a href="https://${
         network === 'homestead' ? '' : network+'.'
       }etherscan.io/address/${userAddress}">
-      View on Etherscan
+      View Account on Etherscan
       </a>
     </div>
   `);
