@@ -2,7 +2,7 @@
 
 login with web3 wallet
 
-Demo at https://harrymoreno.com/sign-in-with-ethereum/ (served from github).
+Demo at https://sign-in-with-ethereum.netlify.app/.
 
 ## Running
 
