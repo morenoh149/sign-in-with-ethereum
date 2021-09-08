@@ -24,5 +24,6 @@ Demo at https://sign-in-with-ethereum.netlify.app/.
 
 ## Credits
 
-Inspired by thread https://twitter.com/BrantlyMillegan/status/1402388133086367751
-and https://twitter.com/gregisenberg/status/1435234043583467526
+Inspired by:
+1. https://twitter.com/BrantlyMillegan/status/1402388133086367751
+1. https://twitter.com/gregisenberg/status/1435234043583467526
