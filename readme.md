@@ -1,4 +1,4 @@
-# Sign with Ethereum
+# Sign In With Ethereum
 
 login with web3 wallet
 
