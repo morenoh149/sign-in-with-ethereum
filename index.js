@@ -6,6 +6,7 @@ let network;
 let signInBtn = document.querySelector('#sign-in-btn');
 let accountInfo = document.querySelector('#account-info');
 let verifyBtn = document.querySelector('#verify-btn');
+let avatar = document.querySelector('#name');
 let provider;
 
 try {
@@ -81,6 +82,15 @@ let displayAccountInformation = () => {
       </a>
     </div>
   `);
+  displayAvatar();
+}
+
+/**
+ * Updates Avatar in upper right hand corner with the current user.
+ */
+let displayAvatar = () => {
+  let truncAddress = `${userAddress.slice(0, 6)}...${userAddress.slice(38)}`;
+  avatar.innerText = truncAddress;
 }
 
 /**
