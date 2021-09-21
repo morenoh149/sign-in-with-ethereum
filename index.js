@@ -7,6 +7,7 @@ let signInBtn = document.querySelector('#sign-in-btn');
 let accountInfo = document.querySelector('#account-info');
 let verifyBtn = document.querySelector('#verify-btn');
 let avatar = document.querySelector('#name');
+let profile = document.querySelector('#profile');
 let provider;
 
 try {
@@ -91,6 +92,9 @@ let displayAccountInformation = () => {
 let displayAvatar = () => {
   let truncAddress = `${userAddress.slice(0, 6)}...${userAddress.slice(38)}`;
   avatar.innerText = truncAddress;
+  profile.href = `https://${
+    network === 'homestead' ? '' : network+'.'
+  }etherscan.io/address/${userAddress}`;
 }
 
 /**
