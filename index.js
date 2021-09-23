@@ -6,6 +6,7 @@ let network;
 let signInBtn = document.querySelector('#sign-in-btn');
 let accountInfo = document.querySelector('#account-info');
 let verifyBtn = document.querySelector('#verify-btn');
+let verifyMsg = document.querySelector('#verify-msg');
 let avatar = document.querySelector('#name');
 let profile = document.querySelector('#profile');
 let provider;
@@ -62,8 +63,22 @@ signInBtn.addEventListener('click', signInWithEthereum);
  * Prompts user to sign a message. This verifies that the address on window.ethereum
  * is owned by the person that has the private key.
  */
- let signMessage = async () => {
-   console.log('todo')
+let signMessage = async () => {
+  let signer = provider.getSigner();
+  let message = 'test message';
+  let rawSignature = await signer.signMessage(message);
+  // message += 'tamper'; // for testing tampering with the message
+  let unpackagedAddress = ethers.utils.verifyMessage(message, rawSignature);
+
+  verifyBtn.style.display = 'none';
+  verifyMsg.style.display = 'block';
+  if (unpackagedAddress === userAddress) {
+    verifyMsg.style.color = 'green';
+    verifyMsg.innerText = "Message signed with correct private key."
+  } else {
+    verifyMsg.style.color = 'red';
+    verifyMsg.innerText = "Message signed with wrong private key."
+  }
 }
 verifyBtn.addEventListener('click', signMessage);
 
@@ -108,9 +123,3 @@ let displayAvatar = async () => {
   }
   avatar.innerText = displayAddress;
 }
-
-/**
- * Prompts user to sign a message. This proves that the detected address is owned
- * by the person that has the private key.
- * TODO https://docs.ethers.io/v5/api/signer/#Signer-signMessage
- */
