@@ -10,11 +10,17 @@ let verifyMsg = document.querySelector('#verify-msg');
 let avatar = document.querySelector('#name');
 let profile = document.querySelector('#profile');
 let provider;
+let signer;
 
 try {
   // A Web3Provider wraps a standard Web3 provider, which is
   // what Metamask injects as window.ethereum into each page
-  provider = new ethers.providers.Web3Provider(window.ethereum)
+  provider = new ethers.providers.Web3Provider(window.ethereum);
+
+  // The Metamask plugin also allows signing transactions to
+  // send ether and pay to change state within the blockchain.
+  // For this, you need the account signer...
+  signer = provider.getSigner();
 }
 catch {
   // non web3 browser, warn user
@@ -34,12 +40,7 @@ catch {
  */
 let signInWithEthereum = async () => {
   provider.send("eth_requestAccounts", [])
-  .then(async () => {  
-    // The Metamask plugin also allows signing transactions to
-    // send ether and pay to change state within the blockchain.
-    // For this, you need the account signer...
-    const signer = await provider.getSigner()
-
+  .then(async () => {
     userAddress = await signer.getAddress()
     balance = await provider.getBalance(userAddress)
     balance = ethers.utils.formatEther(balance);
@@ -64,7 +65,6 @@ signInBtn.addEventListener('click', signInWithEthereum);
  * is owned by the person that has the private key.
  */
 let signMessage = async () => {
-  let signer = provider.getSigner();
   let message = 'test message';
   let rawSignature = await signer.signMessage(message);
   // message += 'tamper'; // for testing tampering with the message
