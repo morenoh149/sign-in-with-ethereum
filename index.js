@@ -105,7 +105,7 @@ let displayAccountInformation = () => {
  * Updates Avatar in upper right hand corner with the current user.
  */
 let displayAvatar = async () => {
-  let userAddress = '0xE5501BC2B0Df6D0D7daAFC18D2ef127D9e612963'; // test ens
+  // let userAddress = '0xE5501BC2B0Df6D0D7daAFC18D2ef127D9e612963'; // test ens
   let name = await provider.lookupAddress(userAddress);
   let displayAddress;
   if (name) {
