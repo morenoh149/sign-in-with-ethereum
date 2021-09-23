@@ -77,7 +77,7 @@ let displayAccountInformation = () => {
     <div>Balance: ${balance} ETH</div>
     <div>
       <a href="https://${
-        network === 'homestead' ? '' : network+'.'
+        network === 'homestead' ? '' : `${network}.`
       }etherscan.io/address/${userAddress}">
       View Account on Etherscan
       </a>
@@ -89,12 +89,24 @@ let displayAccountInformation = () => {
 /**
  * Updates Avatar in upper right hand corner with the current user.
  */
-let displayAvatar = () => {
-  let truncAddress = `${userAddress.slice(0, 6)}...${userAddress.slice(38)}`;
-  avatar.innerText = truncAddress;
-  profile.href = `https://${
-    network === 'homestead' ? '' : network+'.'
-  }etherscan.io/address/${userAddress}`;
+let displayAvatar = async () => {
+  let userAddress = '0xE5501BC2B0Df6D0D7daAFC18D2ef127D9e612963'; // test ens
+  let name = await provider.lookupAddress(userAddress);
+  let displayAddress;
+  if (name) {
+    if (name.length > 16) {
+      displayAddress = `${name.slice(0,14)}...`;
+    } else {
+      displayAddress = name;
+    }
+    profile.href = `https://app.ens.domains/name/${name}`;
+  } else {
+    displayAddress = `${userAddress.slice(0, 6)}...${userAddress.slice(38)}`
+    profile.href = `https://${
+      network === 'homestead' ? '' : `${network}.`
+    }etherscan.io/address/${userAddress}`;
+  }
+  avatar.innerText = displayAddress;
 }
 
 /**
