@@ -13,6 +13,7 @@ Demo at https://sign-in-with-ethereum.netlify.app/.
 1. ✅  Show warning if web2 browser
 1. ✅  Show ens name if any
 1. ✅  Verify user by asking them to sign a message with their private key
+1. ⬜️ Set cookie 🍪 so user is signed in on next load
 1. ⬜️ Mint eth nft
 1. ⬜️ Sign in with SOLANA
 1. ⬜️ Mint sol nft (to compare prices of txns)
