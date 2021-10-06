@@ -4,6 +4,7 @@ let userAddress;
 let balance;
 let network;
 let signInBtn = document.querySelector('#sign-in-btn');
+let signOutBtn = document.querySelector('#sign-out-btn');
 let accountInfo = document.querySelector('#account-info');
 let verifyBtn = document.querySelector('#verify-btn');
 let verifyMsg = document.querySelector('#verify-msg');
@@ -42,12 +43,7 @@ let signInWithEthereum = async () => {
   provider.send("eth_requestAccounts", [])
   .then(async () => {
     userAddress = await signer.getAddress()
-    balance = await provider.getBalance(userAddress)
-    balance = ethers.utils.formatEther(balance);
-    network = provider.network.name;
-    signInBtn.remove();
     displayAccountInformation();
-    verifyBtn.style.display = 'block';
   })
   .catch(err => {
     // Developer probably changed metamask, prompt to refresh
@@ -75,6 +71,7 @@ let signMessage = async () => {
   if (unpackagedAddress === userAddress) {
     verifyMsg.style.color = 'green';
     verifyMsg.innerText = "Message signed with correct private key."
+    storeCookie(userAddress);
   } else {
     verifyMsg.style.color = 'red';
     verifyMsg.innerText = "Message signed with wrong private key."
@@ -83,9 +80,19 @@ let signMessage = async () => {
 verifyBtn.addEventListener('click', signMessage);
 
 /**
+ * Stores a cookie if verified user.
+ */
+let storeCookie = (userAddress) => {
+  document.cookie = `user=${userAddress}`;
+}
+/**
  * Displays User's information on the page.
  */
-let displayAccountInformation = () => {
+let displayAccountInformation = async () => {
+  balance = await provider.getBalance(userAddress)
+  balance = ethers.utils.formatEther(balance);
+  network = provider.network.name;
+  signInBtn.remove();
   accountInfo.insertAdjacentHTML('beforeend', `
     <div>Address: ${userAddress}</div>
     <div>Current Network: ${network}</div>
@@ -98,6 +105,8 @@ let displayAccountInformation = () => {
       </a>
     </div>
   `);
+  verifyBtn.style.display = 'block';
+  signOutBtn.style.display = 'flex';
   displayAvatar();
 }
 
@@ -122,4 +131,21 @@ let displayAvatar = async () => {
     }etherscan.io/address/${userAddress}`;
   }
   avatar.innerText = displayAddress;
+}
+
+/**
+ * remove cookie
+ */
+const logout = () => {
+  document.cookie = "user=";
+}
+signOutBtn.addEventListener('click', logout);
+
+const token = document.cookie
+  .split('; ')
+  .find(row => row.startsWith('user='))
+  .split('=')[1];
+if (token) {
+  userAddress = token;
+  displayAccountInformation();
 }

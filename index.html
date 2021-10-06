@@ -29,6 +29,25 @@
   #profile:visited {
     color: black;
   }
+
+  #sign-out-btn {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    width: 150px;
+    height: 50px;
+    right: 0;
+    top: 110px;
+    text-decoration: none;
+  }
+  #sign-out-btn img {
+    width: 30px;
+    height: 30px;
+  }
+  #sign-out-text {
+    padding: -10px 0 0 0;
+  }
   </style>
 </head>
 <body>
@@ -54,6 +73,10 @@
   <a href="" id="profile">
     <img src="profile.png" />
     <div id="name">Not Signed In</div>
+  </a>
+  <a href="" id="sign-out-btn">
+    <img src="sign-out-btn.gif" />
+    <span id="sign-out-span">Sign Out</span>
   </a>
 </body>
 </html>
