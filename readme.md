@@ -16,8 +16,6 @@ Demo at https://sign-in-with-ethereum.netlify.app/.
 1. ✅  Set cookie 🍪 so user is signed in on next load
 1. ✅  log out
 1. ⬜️ Mint eth nft
-1. ⬜️ Sign in with SOLANA
-1. ⬜️ Mint sol nft (to compare prices of txns)
 
 ## Running
 
